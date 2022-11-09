@@ -6,3 +6,6 @@ npm i mui-image
 
 npm start
 
+npm i gh-pages
+
+npm run deploy
