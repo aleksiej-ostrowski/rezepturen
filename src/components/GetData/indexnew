@@ -1,0 +1,43 @@
+//import { useState, useEffect } from 'React'
+import React from "react";
+import axios from "axios";
+
+const baseURL = "https://aleksiej.website/random/";
+
+export default function GetData({jsonData}) {
+
+  React.useEffect(() => {
+    axios
+      .get(baseURL)
+      .then((response) => {
+
+        console.log(response.data);
+
+        jsonData = response.data.map((x) => [
+          x["recipes"][0]["id"],
+          x["recipes"][0]["title"],
+          x["recipes"][0]["image"],
+          x["recipes"][0]["summary"],
+          x["recipes"][0]["instructions"],
+          x["recipes"][0]["spoonacularSourceUrl"],
+
+          x["recipes"][0]["extendedIngredients"].map((e) => [
+            e["id"],
+            e["original"],
+            e["amount"],   
+            e["image"],
+            e["aisle"],
+          ]),
+    
+        ]);
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
+  console.log(jsonData);
+
+  return jsonData;
+}

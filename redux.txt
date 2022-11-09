@@ -1,0 +1,64 @@
+// App.jsx
+
+import './App.css'
+import {useDispacth, useSelector} from "react-redux";
+
+function App() {
+    const dispatch = useDispatch()
+    const cash = useSelector(state => state.cash)
+    console.log(cash)
+
+    const addCash = (cash) => {
+        dispatch({type: "ADD_CASH", payload: cash})
+    }
+    
+    const getCash = (cash) => {
+        dispatch({type: "GET_CASH", payload: cash})
+    }
+    
+    return (
+        <div className={'app'}>
+            <div style={{fontSize:"3rem"}}>{cash}</div>
+            <div style = {{display:"flex"}}>
+                <button onClick={() => addCash(Number(promt()))}>Plus</button>
+                <button onClick={() => getCash(Number(promt()))}>Minus</button>
+            </div>    
+        </div>  
+    );
+}
+
+
+
+
+// index.js
+
+import ReactDOM from 'react-dom';
+import App from './App';
+import {createStore} from "redux";
+
+const defaultStat = {
+    cash:0;
+}
+
+action = {type: "", payload: ""}
+
+const reducer = (state = defaultState, action) => {
+    switch (action.type) {
+        case "ADD_CASH":
+            return {...state, cash: state.cash + action.payload}
+        case "GET_CASH":
+            return {...state, cash: state.cash - action.payload}
+        default:
+            return state    
+    }
+}
+
+const store = createStore(reducer)
+
+ReactDOM.render (
+    <Provider store={store}> // Provider from package react-redux
+    <App />
+    </Provider>
+    document.getElementById('root')
+);
+
