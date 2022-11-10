@@ -9,3 +9,7 @@ Dies ist ein Programm zur Demonstration mehrerer interessanter Technologien.
 
 - Der Zweck dieses Programms besteht darin, 6 zufällige Kochrezepte anzuzeigen.
 - Die Farbe des Icons ändert sich von grün nach rot. Grün ist gesundes Essen. Rot ist kein sehr gesundes Essen.
+
+**DEMO** https://aleksiej.com/rezepturen/
+
+![screenshot](src/images/demo.png)
